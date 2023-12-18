@@ -8,7 +8,8 @@ public class AlumneProvider {
                 Alumne("Rita", 16),
                 Alumne("Txus", 25),
                 Alumne("Lauri", 18),
-                Alumne("McPato", 19)
+                Alumne("McPato", 19),
+                Alumne("Joe", 45)
             )
         }
     }

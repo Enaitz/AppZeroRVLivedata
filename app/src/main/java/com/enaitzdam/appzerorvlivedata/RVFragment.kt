@@ -21,15 +21,16 @@ class RVFragment : Fragment() {
 
         // Inflate the layout for this fragment
         binding = FragmentRVBinding.inflate(inflater)
-
-
         val recyclerViewAlumnes = binding.recyclerView
-        val alumnes : List<Alumne> = AlumneProvider.loadAlumnes()
-        val alumAdapter = context?.let { AlumAdapter(it,alumnes) }
-
-        recyclerViewAlumnes.adapter = alumAdapter
-        recyclerViewAlumnes.layoutManager=LinearLayoutManager(context)
+        recyclerViewAlumnes.layoutManager = LinearLayoutManager(context)
         recyclerViewAlumnes.setHasFixedSize(true)
+        viewModel.getAlumnes()
+        viewModel.alumnes.observe(viewLifecycleOwner) { listAlumnes ->
+            //important
+            val alumAdapter = AlumAdapter(requireContext(), listAlumnes)
+            recyclerViewAlumnes.adapter = alumAdapter
+        }
+
 
         return binding.root
     }
